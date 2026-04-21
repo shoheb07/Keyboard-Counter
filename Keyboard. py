@@ -1,0 +1,19 @@
+import keyboard
+from collections import defaultdict
+
+key_count = defaultdict(int)
+
+print("Press keys... Press 'esc' to stop.")
+
+while True:
+    event = keyboard.read_event()
+    
+    if event.event_type == keyboard.KEY_DOWN:
+        key_count[event.name] += 1
+        print(f"{event.name} pressed {key_count[event.name]} times")
+    
+    if event.name == 'esc':
+        print("\nFinal Count:")
+        for key, value in key_count.items():
+            print(f"{key}: {value}")
+        break
